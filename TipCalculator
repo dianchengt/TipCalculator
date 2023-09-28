@@ -1,0 +1,33 @@
+import java.util.Scanner;
+import java.text.DecimalFormat;
+
+public class Main{
+    public static void main(String []args){
+        Scanner scan = new Scanner(System.in);
+
+        // asking the user to input values
+        System.out.print("Enter the total bill: $");
+        double bill = scan.nextDouble();
+        System.out.print("Enter the tip percentage as a whole number: ");
+        double tipPercentage = scan.nextDouble();
+        System.out.print("Enter the number of people paying: ");
+        int numOfPeople = scan.nextInt();
+
+        // calculating the tips and costs
+        tipPercentage /= 100;
+        double totalTip = bill * tipPercentage;
+        double tipPerPerson = totalTip / numOfPeople;
+        double costPerPersonWithoutTip = bill / numOfPeople;
+        double totalCostPerPerson = costPerPersonWithoutTip + tipPerPerson;
+        double totalBill = bill + totalTip;
+
+        // setting up DecimalFormat 
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+
+        // printing the information with values rounded to the nearest cent. 
+        System.out.println("The total tip amount is: $" + decimalFormat.format(totalTip));
+        System.out.println("The total bill including the tip is: $" + decimalFormat.format(totalBill));
+        System.out.println("The tip each person has to pay is: $" + decimalFormat.format(tipPerPerson));
+        System.out.println("The total cost per person is: $" + decimalFormat.format(totalCostPerPerson));
+  }
+}
